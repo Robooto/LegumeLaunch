@@ -24,6 +24,23 @@ BasicGame.Preloader.prototype = {
 		//	Here we load the rest of the assets our game needs.
 		//	+ lots of other required assets here
 
+		// candy spaceman
+		this.game.load.spritesheet('spaceMan', 'assets/images/JellyBean_32_32_5.png', 32, 32, 5);
+
+		// ground
+		this.game.load.image('ground', 'assets/images/ground.png'); 
+
+		// arrow
+		this.game.load.image('arrow', 'assets/images/arrow.png');
+
+		// line 
+		this.game.load.image('line', 'assets/images/line.png');
+
+		// starfield
+		this.game.load.image('starfield', 'assets/images/1024x768_star_field_by_nightmaremetropolis.png');
+
+
+
 	},
 
 	create: function () {
@@ -47,7 +64,7 @@ BasicGame.Preloader.prototype = {
 		if (/*this.cache.isSoundDecoded('titleMusic') && */this.ready == false)
 		{
 			this.ready = true;
-			this.state.start('MainMenu');
+			this.state.start('Game');
 		}
 
 	}
