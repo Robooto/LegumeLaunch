@@ -10,12 +10,13 @@ BasicGame.Preloader.prototype = {
 	preload: function () {
 		
 		// Add a loading label 
-		var loadingLabel = this.add.text(this.game.world.centerX, game.world.centerY - 50, 'loading...', { font: '30px Arial', fill: '#ffffff' });
+		var loadingLabel = this.add.text(this.game.world.centerX, game.world.centerY - 80, 'loading...', { font: '40px Arial', fill: '#ffffff' });
 		loadingLabel.anchor.setTo(0.5, 0.5);
 
 		// Add a progress bar
 		var progressBar = this.add.sprite(this.game.world.centerX, game.world.centerY, 'progressBar');
 		progressBar.anchor.setTo(0.5, 0.5);
+		progressBar.scale.set(2);
 		this.load.setPreloadSprite(progressBar);
 
 		// Load all assets
@@ -39,6 +40,33 @@ BasicGame.Preloader.prototype = {
 		// starfield
 		this.game.load.image('starfield', 'assets/images/1024x768_star_field_by_nightmaremetropolis.png');
 
+		// earth
+		this.game.load.image('earth', 'assets/images/world.png');
+
+		// launch platform
+		this.game.load.image('launchplat', 'assets/images/launchplat.png');
+
+		// new world
+		this.game.load.image('newWorld', 'assets/images/newWorld.png');
+
+		// asteroids
+		this.game.load.spritesheet('asteroid', 'assets/images/asteroids_36_36_16.png', 36, 36, 16);
+
+		// particles
+		this.game.load.image('asteroidpart', 'assets/images/asteroidparticle.png');
+		this.game.load.image('spacemanpart', 'assets/images/beanParticle.png');
+
+		//clouds
+        this.game.load.image('clouds', 'assets/images/cloud_3.png');
+
+		//sounds
+		this.game.load.audio('asteroidexplode', ['assets/sounds/Explosion29.ogg', 'assets/sounds/Explosion29.mp3']);
+		this.game.load.audio('spacemanexplode', ['assets/sounds/Hit_Hurt34.ogg', 'assets/sounds/Hit_Hurt34.mp3']);
+		this.game.load.audio('spacemanjump', ['assets/sounds/Jump17.ogg', 'assets/sounds/Jump17.mp3']);
+		this.game.load.audio('endgame', ['assets/sounds/chipquest.ogg', 'assets/sounds/chipquest.mp3']);
+
+		this.game.load.audio('gameMusic', ['assets/sounds/Double-Jump.ogg', 'assets/sounds/Double-Jump.mp3']);
+
 
 
 	},
@@ -61,10 +89,10 @@ BasicGame.Preloader.prototype = {
 		//	If you don't have any music in your game then put the game.state.start line into the create function and delete
 		//	the update function completely.
 		
-		if (/*this.cache.isSoundDecoded('titleMusic') && */this.ready == false)
+		if (this.cache.isSoundDecoded('gameMusic') && this.ready == false)
 		{
 			this.ready = true;
-			this.state.start('Game');
+			this.state.start('MainMenu');
 		}
 
 	}
